@@ -1,0 +1,8 @@
+@import '../../../components/base';
+
+.main-container {
+  display: flex;
+  flex: 1 0 auto;
+  min-height: calc(100vh - 400px);
+  height: auto;
+}
