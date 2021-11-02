@@ -1,0 +1,62 @@
+@import '../../../components/base';
+
+.sidebar {
+  display: flex;
+  background-color: var(--color-green-light-4);
+  border-bottom: var(--line-green-dark);
+}
+
+.side-nav {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  font-size: 1.8rem;
+
+  &__item {
+    position: relative;
+    padding: 1rem 0.5rem;
+  }
+
+  &__item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 3px;
+    background-color: var(--color-green-light-2);
+    transform: scaleY(0);
+    transition: transform .2s, width .4s cubic-bezier(1,0,0,1) .2s, background-color .1s;
+  }
+
+  &__item:hover::before,
+  &__item-active::before {
+    transform: scaleY(1);
+    width: 100%;
+  }
+
+  &__item:active::before {
+    background-color: var(--color-green-light-5);
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+  }
+
+  &__link:link,
+  &__link:visited {
+    color: black;
+    text-decoration: none;
+    padding: 1rem;
+    position: relative;
+    z-index: 10;
+  }
+
+  &__icon {
+    height: 2rem;
+    width: 2rem;
+    margin: 0 1rem 0 2rem;
+  }
+
+}
