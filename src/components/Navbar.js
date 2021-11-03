@@ -22,5 +22,4 @@ export const NavbarItem = ({href='#', icon, text}) => {
   )
 };
 
-
 export default Navbar;

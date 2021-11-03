@@ -1,9 +1,8 @@
-@import '../../../components/base';
+@import 'base';
 
 .sidebar {
   display: flex;
-  background-color: var(--color-green-light-4);
-  border-bottom: var(--line-green-dark);
+  background-color: #fff;
 }
 
 .side-nav {
@@ -24,7 +23,7 @@
     left: 0;
     height: 100%;
     width: 3px;
-    background-color: var(--color-green-light-2);
+    background-color: var(--color-blue-light-4);
     transform: scaleY(0);
     transition: transform .2s, width .4s cubic-bezier(1,0,0,1) .2s, background-color .1s;
   }
@@ -36,7 +35,7 @@
   }
 
   &__item:active::before {
-    background-color: var(--color-green-light-5);
+    background-color: var(--color-blue-light-5);
   }
 
   &__link {
