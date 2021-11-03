@@ -1,4 +1,4 @@
-@import '../../../components/base';
+@import 'base';
 
 .footer-container {
   display: flex;
@@ -7,7 +7,6 @@
 
   height: 5rem;
   font-size: 1.6rem;
-  background-color: var(--color-green-light-1);
-  border-top: var(--line-green-dark);
+  background-color: var(--color-blue-light-1);
   border-radius: 0 0 25px 25px ;
 }

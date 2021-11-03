@@ -1,4 +1,4 @@
-@import '../../../components/base';
+@import 'base';
 
 .header-container {
   display: flex;
@@ -7,14 +7,14 @@
 
   height: 15rem;
   font-size: 1.6rem;
-  background-color: var(--color-green-light-1);
-  border-bottom: var(--line-green-dark);
+  background-color: var(--color-blue-light-1);
+  border-bottom: var(--line-blue-light);
   border-radius: 25px 25px 0 0;
 }
 
 .logo {
   height: 140px;
-  weight: 140px;
+  width: 140px;
   margin-left: 2rem;
 }
 
@@ -40,7 +40,7 @@
 
     &::-webkit-input-placeholder{
       font-weight: 100;
-      color: var(--color-grey-light-4);
+      color: #000;
     }
   }
 
@@ -84,7 +84,7 @@
   }
 
   & > *:hover {
-    background-color: var(--color-green-light-5);
+    background-color: var(--color-blue-light-5);
   }
 
   &__icon {
