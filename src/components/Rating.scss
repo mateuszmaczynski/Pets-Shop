@@ -1,0 +1,9 @@
+@import 'base';
+
+.rating span {
+  margin: 0.1rem;
+}
+.rating span:last-child {
+  color: black;
+  margin: 1rem;
+}
