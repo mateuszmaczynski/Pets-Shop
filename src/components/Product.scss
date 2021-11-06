@@ -15,8 +15,6 @@
 }
 
 .product-description {
-  //display: flex;
-  //flex-direction: column;
   margin-bottom: auto;
   height: 11rem;
   padding: 1rem;
@@ -25,11 +23,20 @@
   &__name{
     height: 6rem;
   }
-  &__price{
-    height: 2rem;
-    //align-self: flex-end;
-    font-size: 2rem;
+  &__overview {
+    display: flex;
+    justify-content: space-between;
+
+    &-price{
+      height: 2rem;
+      align-self: center;
+      font-size: 2rem;
+    }
+    &-rate {
+      align-self: center;
+    }
   }
+
 }
 
 .product-description > * {
