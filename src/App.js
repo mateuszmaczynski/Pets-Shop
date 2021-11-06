@@ -1,4 +1,10 @@
 import React from 'react';
+import {
+  BrowserRouter as Router,
+  Navigate,
+  Route,
+  Routes
+} from 'react-router-dom';
 import './components/_base.scss';
 import {
   Footer,
@@ -7,6 +13,8 @@ import {
   Navbar,
   NavbarItem
 } from './components'
+import DogProducts from './views/DogProducts'
+import CatProducts from './views/CatProducts'
 import bird from './assets/icons/bird.gif';
 import cat from './assets/icons/cat.gif';
 import dog from './assets/icons/dog.gif';
@@ -14,19 +22,25 @@ import rabbit from './assets/icons/rabbit.gif';
 
 function App() {
   return (
-    <div className='container'>
-      <Header/>
-      <Navbar>
-        <NavbarItem text='Dog' icon={dog} />
-        <NavbarItem text='Cat' icon={cat} />
-        <NavbarItem text='Small Pet' icon={rabbit} />
-        <NavbarItem text='Bird' icon={bird} />
-      </Navbar>
-      <Main>
-        lorem ipsum
-      </Main>
-      <Footer/>
-    </div>
+    <Router>
+      <div className='container'>
+        <Header/>
+        <Navbar>
+          <NavbarItem href='/dogs' text='Dog' icon={dog} />
+          <NavbarItem href='/cats' text='Cat' icon={cat} />
+          <NavbarItem href='/small-pets' text='Small Pet' icon={rabbit} />
+          <NavbarItem href='/birds' text='Bird' icon={bird} />
+        </Navbar>
+        <Main>
+          <Routes>
+            <Route path="/cats" element={<CatProducts />} />
+            <Route path="/dogs" element={<DogProducts />} />
+            <Route exact path='/' element={<Navigate replace to='/dogs'/>} />
+          </Routes>
+        </Main>
+        <Footer/>
+      </div>
+    </Router>
   );
 }
 
