@@ -15,6 +15,7 @@ import {
 } from './components'
 import DogProducts from './views/DogProducts'
 import CatProducts from './views/CatProducts'
+import ProductPage from './views/ProductPage'
 import bird from './assets/icons/bird.gif';
 import cat from './assets/icons/cat.gif';
 import dog from './assets/icons/dog.gif';
@@ -35,6 +36,7 @@ function App() {
           <Routes>
             <Route path="/cats" element={<CatProducts />} />
             <Route path="/dogs" element={<DogProducts />} />
+            <Route path="/product/:id" element={<ProductPage />}></Route>
             <Route exact path='/' element={<Navigate replace to='/dogs'/>} />
           </Routes>
         </Main>

@@ -1,15 +1,15 @@
 import React from 'react';
 import data from "../db";
-import {Product} from "../components";
+import {ProductTile} from "../components";
 
 const CatProducts = () => {
   const catProducts = data.products.filter(({category}) => (category === 'Cat'))
   return (
-    <>
+    <div className="flex-row-evenly">
       {catProducts.map((item) => (
-        <Product key={item._id} product={item} />
+        <ProductTile key={item._id} product={item} />
       ))}
-    </>
+    </div>
   )
 };
 

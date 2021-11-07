@@ -3,7 +3,7 @@ import Header from './Header';
 import Main from './Main';
 import Navbar from './Navbar';
 import {NavbarItem} from './Navbar';
-import Product from './Product';
+import ProductTile from './ProductTile';
 import Rating from './Rating';
 
 export {
@@ -12,6 +12,6 @@ export {
   Main,
   Navbar,
   NavbarItem,
-  Product,
+  ProductTile,
   Rating
 }

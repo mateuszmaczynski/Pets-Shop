@@ -1,11 +1,6 @@
 @import 'base';
 
 .main-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  align-items: center;
-
   min-height: calc(100vh - 400px);
   height: auto;
   border-bottom: var(--line-blue-light);
