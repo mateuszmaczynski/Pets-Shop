@@ -2,16 +2,23 @@
 
 .product-tile {
   width: 31rem;
-  max-height: 52rem;
+  height: 55rem;
   margin: 9px;
   border: var(--line-grey);
   border-radius: 0.5rem;
 }
 
-.product-image {
+.product-container {
   display: flex;
-  width: 100%;
-  height: 40rem;
+  justify-content: center;
+  align-items: center;
+  height: 42rem;
+}
+
+.product-image {
+
+  width: auto;
+  height: auto;
 }
 
 .product-description {

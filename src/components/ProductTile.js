@@ -1,13 +1,13 @@
 import React from 'react';
-import './Product.scss';
+import './ProductTile.scss';
 import {Rating} from './index';
 
-const Product = ({product}) => {
+const ProductTile = ({product}) => {
   return (
     <div key={product.id} className='product-tile'>
-      <a href={`/product/${product._id}`}>
-        <img className='product-image' src={product.image} alt={product.name} />
-      </a>
+      <div className='product-container'>
+        <img className='product-container-image' src={product.image} alt={product.name} />
+      </div>
       <div className='product-description'>
         <div className="product-description__name">
           <a href={`/product/${product._id}`}>
@@ -25,4 +25,4 @@ const Product = ({product}) => {
   )
 };
 
-export default Product;
+export default ProductTile;
