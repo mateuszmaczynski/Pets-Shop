@@ -2,7 +2,8 @@
 
 .sidebar {
   display: flex;
-  background-color: #fff;
+  color: #fff;
+  background-color: var(--color-blue-dark-1);
 }
 
 .side-nav {
@@ -23,7 +24,7 @@
     left: 0;
     height: 100%;
     width: 3px;
-    background-color: var(--color-blue-light-4);
+    background-color: var(--color-blue-dark-4);
     transform: scaleY(0);
     transition: transform .2s, width .4s cubic-bezier(1,0,0,1) .2s, background-color .1s;
   }
@@ -35,12 +36,17 @@
   }
 
   &__item:active::before {
-    background-color: var(--color-blue-light-5);
+    background-color: var(--color-blue-dark-4);
   }
 
   &__link {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
+
+    &-text {
+      color: #fff;
+    }
   }
 
   &__link:link,

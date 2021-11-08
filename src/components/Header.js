@@ -17,13 +17,13 @@ const Header = () => {
         </button>
       </form>
       <nav className='user-nav'>
-        <div className='user-nav__icon-box'>
+        <div className='user-nav__box'>
           <img src={cart} className="user-nav__icon" alt="Search icon"/>
         </div>
-        <div className='user-nav__icon-box'>
+        <div className='user-nav__box'>
           <img src={bubbles} className="user-nav__icon" alt="Search icon"/>
         </div>
-        <div className='user-nav__icon-box'>
+        <div className='user-nav__box'>
           <img src={user} className="user-nav__icon" alt="Search icon"/>
         </div>
       </nav>

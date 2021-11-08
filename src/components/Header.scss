@@ -7,8 +7,8 @@
 
   height: 15rem;
   font-size: 1.6rem;
-  background-color: var(--color-blue-light-1);
-  border-bottom: var(--line-blue-light);
+  background-color: var(--color-blue-dark-2);
+  border-bottom: var(--line-blue-dark);
   border-radius: 25px 25px 0 0;
 }
 
@@ -63,7 +63,7 @@
   &__icon {
     height: 2rem;
     width: 2rem;
-    fill: var(--color-grey-dark-3);
+    fill: var(--color-grey-dark-4);
   }
 }
 
@@ -84,8 +84,9 @@
   }
 
   & > *:hover {
-    background-color: var(--color-blue-light-5);
+    background-color: var(--color-blue-dark-4);
   }
+
 
   &__icon {
     height: 2.5rem;

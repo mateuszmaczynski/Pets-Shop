@@ -16,7 +16,7 @@ export const NavbarItem = ({href='#', icon, text}) => {
     <li className='side-nav__item side-nav__item--active'>
       <a href={href} className='side-nav__link'>
         {icon && <img src={icon} className="side-nav__icon" alt={icon} />}
-        <span>{text}</span>
+        <span className="side-nav__link-text">{text}</span>
       </a>
     </li>
   )
