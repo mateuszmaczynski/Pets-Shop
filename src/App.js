@@ -16,10 +16,10 @@ import {
 import DogProducts from './views/DogProducts'
 import CatProducts from './views/CatProducts'
 import ProductPage from './views/ProductPage'
-import bird from './assets/icons/bird.gif';
-import cat from './assets/icons/cat.gif';
-import dog from './assets/icons/dog.gif';
-import rabbit from './assets/icons/rabbit.gif';
+import bird from './assets/icons/bird.ico';
+import cat from './assets/icons/cat.ico';
+import dog from './assets/icons/dog.ico';
+import rabbit from './assets/icons/rabbit.ico';
 
 function App() {
   return (
