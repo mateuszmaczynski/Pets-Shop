@@ -1,0 +1,27 @@
+@import 'base';
+
+.loading-container {
+  &:before, &:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 12rem;
+    height: 12rem;
+    border-radius: 50%;
+    border-width: 1rem;
+    border-style: solid;
+    border-top-color: var(--color-blue-dark-4);
+    border-right-color: var(--color-blue-light-5);
+    border-bottom-color: var(--color-blue-dark-1);
+    border-left-color: var(--color-blue-light-4);
+    transform: translate(-50%, -50%);
+    animation: rotate 1.5s infinite ease-in-out;
+    animation-delay: .5s;
+  }
+}
+
+@keyframes rotate {
+  0% { transform: translate(-50%, -50%) rotate(0); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
