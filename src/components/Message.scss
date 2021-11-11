@@ -1,0 +1,18 @@
+@import 'base';
+
+.message {
+  font-size: 2.0rem;
+  padding: 1rem;
+  border: 0.1rem solid #fff;
+  border-radius: 0.5rem;
+}
+
+.message-info {
+  color: var(--color-blue-light-2);
+  background-color: var(--color-grey-light-2);
+}
+
+.message-error {
+  color: var(--color-red-dark-1);
+  background-color: var(--color-grey-light-2);
+}
