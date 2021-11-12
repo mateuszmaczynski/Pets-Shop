@@ -5,7 +5,7 @@ const Rating = ({rating = 0, numReviews = '' }) => {
   let stars = [];
   for(let i = 1; i < 6; i ++ ){
     stars.push(
-      <span>
+      <span key={i}>
         <i
           className={
             rating >= i
