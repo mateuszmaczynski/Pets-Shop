@@ -190,8 +190,22 @@ ul {
   &__wide {
     width: 100%;
   }
+
+  &:hover {
+    background-color: var(--color-blue-dark-4);
+  }
+
+  &__disabled {
+    background-color: var(--color-grey-dark-2);
+    border: 0.1rem var(--color-grey-dark-1) solid;
+
+    &:hover {
+      background-color: var(--color-grey-dark-2);
+    }
+  }
 }
 
-.button:hover {
-  background-color: var(--color-blue-dark-4);
+.image-large {
+  width: auto;
+  height: auto;
 }

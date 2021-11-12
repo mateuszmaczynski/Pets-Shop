@@ -16,12 +16,13 @@ import {
 import BirdProducts from './views/BirdProducts';
 import CatProducts from './views/CatProducts';
 import DogProducts from './views/DogProducts';
-import SmallPetsProducts from "./views/SmallPetsProducts";
+import SmallPetsProducts from './views/SmallPetsProducts';
 import ProductPage from './views/ProductPage';
 import bird from './assets/icons/bird.ico';
 import cat from './assets/icons/cat.ico';
 import dog from './assets/icons/dog.ico';
 import rabbit from './assets/icons/rabbit.ico';
+
 
 function App() {
   return (
@@ -36,11 +37,11 @@ function App() {
         </Navbar>
         <Main>
           <Routes>
-            <Route path="/birds" element={<BirdProducts />} />
-            <Route path="/cats" element={<CatProducts />} />
-            <Route path="/dogs" element={<DogProducts />} />
-            <Route path="/small-pets" element={<SmallPetsProducts />} />
-            <Route path="/product/:id" element={<ProductPage />}></Route>
+            <Route path='/birds' element={<BirdProducts />} />
+            <Route path='/cats' element={<CatProducts />} />
+            <Route path='/dogs' element={<DogProducts />} />
+            <Route path='/small-pets' element={<SmallPetsProducts />} />
+            <Route path='/product/:id' element={<ProductPage />}></Route>
             <Route exact path='/' element={<Navigate replace to='/dogs'/>} />
           </Routes>
         </Main>
