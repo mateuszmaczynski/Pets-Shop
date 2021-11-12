@@ -4,7 +4,7 @@ import './LoadingIndicator.scss';
 const LoadingIndicator = () => {
 
   return (
-    <div className='loading-container' />
+    <div className='loading-container'/>
   )
 };
 

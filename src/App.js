@@ -13,9 +13,11 @@ import {
   Navbar,
   NavbarItem
 } from './components'
-import DogProducts from './views/DogProducts'
-import CatProducts from './views/CatProducts'
-import ProductPage from './views/ProductPage'
+import BirdProducts from './views/BirdProducts';
+import CatProducts from './views/CatProducts';
+import DogProducts from './views/DogProducts';
+import SmallPetsProducts from "./views/SmallPetsProducts";
+import ProductPage from './views/ProductPage';
 import bird from './assets/icons/bird.ico';
 import cat from './assets/icons/cat.ico';
 import dog from './assets/icons/dog.ico';
@@ -34,8 +36,10 @@ function App() {
         </Navbar>
         <Main>
           <Routes>
+            <Route path="/birds" element={<BirdProducts />} />
             <Route path="/cats" element={<CatProducts />} />
             <Route path="/dogs" element={<DogProducts />} />
+            <Route path="/small-pets" element={<SmallPetsProducts />} />
             <Route path="/product/:id" element={<ProductPage />}></Route>
             <Route exact path='/' element={<Navigate replace to='/dogs'/>} />
           </Routes>

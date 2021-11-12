@@ -1,6 +1,6 @@
 import React from 'react';
 import './Header.scss';
-import logo from '../assets/images/Logo.png'
+import logo from '../assets/images/Logo.svg'
 import searchIcon from '../assets/icons/search.svg';
 import cart from '../assets/icons/cart.svg';
 import bubbles from '../assets/icons/bubbles.svg';
