@@ -1,5 +1,6 @@
 import React from 'react';
 import './ProductTile.scss';
+import { Link } from 'react-router-dom';
 import {Rating} from './index';
 
 const ProductTile = ({product}) => {
@@ -10,9 +11,9 @@ const ProductTile = ({product}) => {
       </div>
       <div className='product-description'>
         <div className="product-description__name">
-          <a href={`/product/${product._id}`}>
+          <Link to={`/product/${product._id}`}>
             <h2>{product.name}</h2>
-          </a>
+          </Link>
         </div>
         <div className='product-description__overview'>
           <div className='product-description__overview-price'>${product.price}</div>

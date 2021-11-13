@@ -1,5 +1,6 @@
 import React from 'react';
 import './Navbar.scss';
+import {Link} from 'react-router-dom';
 
 const Navbar = ({children}) => {
   return (
@@ -11,13 +12,13 @@ const Navbar = ({children}) => {
   )
 };
 
-export const NavbarItem = ({href='#', icon, text}) => {
+export const NavbarItem = ({href = '#', icon, text}) => {
   return (
     <li className='side-nav__item side-nav__item--active'>
-      <a href={href} className='side-nav__link'>
-        {icon && <img src={icon} className="side-nav__icon" alt={icon} />}
+      <Link to={href} className='side-nav__link'>
+        {icon && <img src={icon} className="side-nav__icon" alt={icon}/>}
         <span className="side-nav__link-text">{text}</span>
-      </a>
+      </Link>
     </li>
   )
 };

@@ -26,9 +26,7 @@ export const getProductDetails = (productId) => async (dispatch) => {
   try {
     let getProductUrl = 'https://run.mocky.io/v3/9eed3593-c5e1-4a12-a45f-106ea86e0822';
     const { data } = await axios.get(getProductUrl);
-    console.log('data =',data);
     const product = data.products.find(({_id}) => _id == productId);
-    console.log('product =',product);
     dispatch({ type: PRODUCT_DETAILS_SUCCESS, payload: product });
   } catch (error) {
     dispatch({
