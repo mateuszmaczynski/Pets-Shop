@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {getProductDetails} from '../actions/products';
 import {
@@ -6,19 +6,31 @@ import {
   Message,
   Rating
 } from '../components';
-import {Link, useParams} from 'react-router-dom';
+import {Link, useNavigate, useParams, } from 'react-router-dom';
 
-const ProductPage = () => {
+const ProductPage = (props) => {
+  const [quantity, setQuantity] = useState(1);
+  const navigate = useNavigate();
   const {id: productId} = useParams();
   const dispatch = useDispatch();
   const productDetails = useSelector((state) => state.productDetails);
   const {loading, error, product} = productDetails;
-  console.log('loading ==', loading);
-  console.log('product ==', product);
 
   useEffect(() => {
     dispatch(getProductDetails(productId));
   }, [dispatch, productId]);
+
+  const addToCart = () => {
+    const productData = {
+      name: productDetails?.product?.name,
+      image: productDetails?.product?.image,
+      price: productDetails?.product?.price,
+      countInStock: productDetails?.product?.countInStock,
+      id: productDetails?.product?._id,
+      quantity: Number(quantity)
+    }
+    navigate(`/cart/${productId}`, { state: {productData}});
+  };
 
   return (
     <>
@@ -74,8 +86,23 @@ const ProductPage = () => {
                   </div>
                 </div>
                 <div>
-                  <button className={`button button__wide ${product.countInStock === 0 && 'button__disabled'}`}
-                          dibabled={product.countInStock === 0 ? true : undefined}>Add to cart
+                  <div className='flex-row-between'>
+                    <div>Quantity</div>
+                    <div>
+                      <select
+                        value={quantity}
+                        onChange={(e) => setQuantity(e.target.value)}
+                      >
+                        {[...Array(product.countInStock).keys()].map((item) => (
+                          <option key={item + 1} value={item + 1}>{item + 1}</option>)
+                        )}
+                      </select>
+                    </div>
+                  </div>
+                  <button
+                    className={`button button__wide ${product.countInStock === 0 && 'button__disabled'}`}
+                    onClick={addToCart}
+                    dibabled={product.countInStock === 0 ? true : undefined}>Add to cart
                   </button>
                 </div>
               </div>
