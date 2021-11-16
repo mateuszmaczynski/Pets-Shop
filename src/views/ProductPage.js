@@ -86,7 +86,7 @@ const ProductPage = (props) => {
                   </div>
                 </div>
                 <div>
-                  <div className='flex-row-between'>
+                  <div className='flex-row-between margin-bottom-low'>
                     <div>Quantity</div>
                     <div>
                       <select
