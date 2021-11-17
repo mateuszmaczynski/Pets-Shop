@@ -1,7 +1,6 @@
 import React from 'react';
 import {
   BrowserRouter as Router,
-  Navigate,
   Route,
   Routes
 } from 'react-router-dom';
@@ -13,12 +12,14 @@ import {
   Navbar,
   NavbarItem
 } from './components'
+import AllProducts from "./views/AllProducts";
 import BirdProducts from './views/BirdProducts';
+import CartPage from './views/CartPage';
 import CatProducts from './views/CatProducts';
 import DogProducts from './views/DogProducts';
 import SmallPetsProducts from './views/SmallPetsProducts';
 import ProductPage from './views/ProductPage';
-import CartPage from './views/CartPage';
+import SearchPage from './views/SearchPage';
 import bird from './assets/icons/bird.ico';
 import cat from './assets/icons/cat.ico';
 import dog from './assets/icons/dog.ico';
@@ -37,14 +38,14 @@ function App() {
         </Navbar>
         <Main>
           <Routes>
-            <Route path='/cart' element={<CartPage/>}/>
-            <Route path='/cart/:id' element={<CartPage/>}/>
-            <Route path='/product/:id' element={<ProductPage/>}/>
             <Route path='/birds' element={<BirdProducts/>}/>
+            <Route path='/cart' element={<CartPage/>}/>
             <Route path='/cats' element={<CatProducts/>}/>
             <Route path='/dogs' element={<DogProducts/>}/>
+            <Route path='/product/:id' element={<ProductPage/>}/>
+            <Route path="/search/name/:name" element={<SearchPage />} exact/>
             <Route path='/small-pets' element={<SmallPetsProducts/>}/>
-            <Route exact path='/' element={<Navigate replace to='/dogs'/>}/>
+            <Route exact path='/' element={<AllProducts />}/>
           </Routes>
         </Main>
         <Footer/>

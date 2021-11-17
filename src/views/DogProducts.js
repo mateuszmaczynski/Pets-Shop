@@ -23,6 +23,7 @@ const DogProducts = () => {
       setDogProducts(dogs)
     }
   }, [products])
+
   return (
     <>
       {loading ? (

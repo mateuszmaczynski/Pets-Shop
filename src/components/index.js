@@ -7,6 +7,7 @@ import Navbar from './Navbar';
 import {NavbarItem} from './Navbar';
 import ProductTile from './ProductTile';
 import Rating from './Rating';
+import SearchBox from "./SearchBox";
 
 export {
   Footer,
@@ -17,5 +18,6 @@ export {
   Navbar,
   NavbarItem,
   ProductTile,
-  Rating
+  Rating,
+  SearchBox
 }

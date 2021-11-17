@@ -1,25 +1,22 @@
 import React from 'react';
-import {useSelector} from 'react-redux';
 import './Header.scss';
+import {useSelector} from 'react-redux';
 import {Link} from 'react-router-dom';
 import logo from '../assets/images/Logo.svg'
-import searchIcon from '../assets/icons/search.svg';
 import cart from '../assets/icons/cart.svg';
 import bubbles from '../assets/icons/bubbles.svg';
 import user from '../assets/icons/user.svg';
+import {SearchBox} from "./index";
 
 const Header = () => {
   const cartData = useSelector((state) => state.cart);
   const {cartItems} = cartData;
   return (
     <header className='header-container'>
-      <img src={logo} className="logo" alt="Pets online store logo"/>
-      <form action='#' className='search'>
-        <input type='text' className='search__input' placeholder='Search product'/>
-        <button className='search__button'>
-          <img src={searchIcon} className="search__icon" alt="Search icon"/>
-        </button>
-      </form>
+      <Link to='/'>
+        <img src={logo} className="logo" alt="Pets online store logo"/>
+      </Link>
+      <SearchBox />
       <nav className='user-nav'>
         <div className='user-nav__box'>
           <Link to="/cart">

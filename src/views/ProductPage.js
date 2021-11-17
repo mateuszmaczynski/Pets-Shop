@@ -6,7 +6,7 @@ import {
   Message,
   Rating
 } from '../components';
-import {Link, useNavigate, useParams, } from 'react-router-dom';
+import {Link, useNavigate, useParams} from 'react-router-dom';
 
 const ProductPage = (props) => {
   const [quantity, setQuantity] = useState(1);
@@ -29,7 +29,7 @@ const ProductPage = (props) => {
       id: productDetails?.product?._id,
       quantity: Number(quantity)
     }
-    navigate(`/cart/${productId}`, { state: {productData}});
+    navigate(`/cart`, { state: {productData}});
   };
 
   return (

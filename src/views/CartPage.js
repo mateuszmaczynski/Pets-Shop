@@ -6,11 +6,11 @@ import {Message} from '../components';
 
 const CartPage = (props) => {
   const dispatch = useDispatch();
-  const {id: productId} = useParams();
   const {state} = useLocation();
   const navigate = useNavigate();
   const cart = useSelector((state) => state.cart)
   const {cartItems} = cart;
+  const productId = state?.productData?.id;
   let quantity = state?.productData?.quantity || 1;
   const productData = state?.productData;
 
