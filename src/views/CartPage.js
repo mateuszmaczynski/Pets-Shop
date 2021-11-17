@@ -11,7 +11,6 @@ const CartPage = (props) => {
   const navigate = useNavigate();
   const cart = useSelector((state) => state.cart)
   const {cartItems} = cart;
-  debugger;
   let quantity = state?.productData?.quantity || 1;
   const productData = state?.productData;
 
