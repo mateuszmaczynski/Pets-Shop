@@ -25,6 +25,7 @@ import dog from './assets/icons/dog.ico';
 import rabbit from './assets/icons/rabbit.ico';
 
 function App() {
+
   return (
     <Router>
       <div className='container'>

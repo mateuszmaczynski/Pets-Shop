@@ -3,6 +3,8 @@ import {useDispatch, useSelector} from 'react-redux';
 import {Link, useLocation, useNavigate, useParams} from 'react-router-dom';
 import {addToCart, removeFromCart} from '../actions/cart';
 import {Message} from '../components';
+import { ethers } from "ethers";
+import Shop from '../artifacts/contracts/Shop.sol/Shop.json'
 
 const CartPage = (props) => {
   const dispatch = useDispatch();
@@ -11,11 +13,12 @@ const CartPage = (props) => {
   const navigate = useNavigate();
   const cart = useSelector((state) => state.cart)
   const {cartItems} = cart;
-  debugger;
+
   let quantity = state?.productData?.quantity || 1;
   const productData = state?.productData;
 
   useEffect(() => {
+
     if (productId) {
       dispatch(addToCart(productData, productId, quantity));
     }
@@ -24,6 +27,26 @@ const CartPage = (props) => {
   const removeFromCartHandler = (id) => {
     dispatch(removeFromCart(id));
   }
+
+  async function connect () {
+
+    await window.ethereum.request({ method: 'eth_requestAccounts' });
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+
+    const signer = provider.getSigner(0)
+    const contract = new ethers.Contract("0x7628f5daBB0234e8e6a9ebC0968e4715F3b9b501", Shop.abi, signer);
+
+    //Tuple "AA" - product's code, 1 - count of current product
+    const tup = [["AA", 1], ["GG", 1]]; // <- TODO Connect with the cart
+    
+    const address = await signer.getAddress();
+    contract.buy(tup, {from: address.toString(), value: ethers.utils.parseEther("0.00001")}).then(function(result){             
+      alert('transaction success')})
+	.catch(function(e){
+   //Error handling
+      console.log('error')
+   });
+  };
 
   const checkoutHandler = () => {
     navigate(`/shipping`);
@@ -112,7 +135,9 @@ const CartPage = (props) => {
           <div className='card-box'>
             <div className='flex-row-between'>
               <div className='text-medium'>Subtotal {countItems()}: {countValue()}</div>
-              <button className='button button__wide margin-top-medium'>
+              <button className='button button__wide margin-top-medium'
+onClick={() => connect()}
+>
                 Proceed to Checkout
               </button>
             </div>

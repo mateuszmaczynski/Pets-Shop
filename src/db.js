@@ -2,6 +2,7 @@ const data = {
   products: [
     {
       _id: '1',
+      code: 'AA',
       name: 'WOW FOOD Adult & Senior Dog Food – Chicken &  Brown Rice',
       category: 'Dog',
       countInStock: 10,
@@ -23,6 +24,7 @@ const data = {
     },
     {
       _id: '2',
+      code: 'BB',
       name: 'Lover Puppy- Chicken with Fish',
       category: 'Dog',
       countInStock: 10,
@@ -43,6 +45,7 @@ const data = {
     },
     {
       _id: '3',
+      code: 'CC',
       name: 'Wild Taste - High Prairie Adult',
       category: 'Dog',
       countInStock: 10,
@@ -64,6 +67,7 @@ const data = {
     },
     {
       _id: '4',
+      code: 'DD',
       name: 'WOLFIE Adult Black Rocks - Goat with fruits of the forest, roots and wild herbs',
       category: 'Dog',
       countInStock: 10,
@@ -85,6 +89,7 @@ const data = {
     },
     {
       _id: '5',
+      code: 'EE',
       name: 'Health live – veterinary diet Renal',
       category: 'Dog',
       countInStock: 10,
@@ -106,6 +111,7 @@ const data = {
     },
     {
       _id: '6',
+      code: 'FF',
       name: 'Paws – Natural dog food – Chicken breast',
       category: 'Dog',
       countInStock: 10,
@@ -126,6 +132,7 @@ const data = {
     },
     {
       _id: '7',
+      code: 'GG',
       name: 'enjoy – grain free chicken',
       category: 'Cat',
       countInStock: 10,
@@ -147,6 +154,7 @@ const data = {
     },
     {
       _id: '8',
+      code: 'HH',
       name: 'KING KITTY – Regular Sensible',
       category: 'Cat',
       countInStock: 10,
@@ -167,6 +175,7 @@ const data = {
     },
     {
       _id: '9',
+      code: 'HH',
       name: 'Wild adult',
       category: 'Cat',
       countInStock: 10,
@@ -187,6 +196,7 @@ const data = {
     },
     {
       _id: '10',
+      code: 'II',
       name: 'Nature mood',
       category: 'Cat',
       countInStock: 10,
@@ -208,6 +218,7 @@ const data = {
     },
     {
       _id: '11',
+      code: 'JJ',
       name: 'Mrauu… with love – Pacific tuna in jelly',
       category: 'Cat',
       countInStock: 10,
@@ -229,6 +240,7 @@ const data = {
     },
     {
       _id: '12',
+      code: 'KK',
       name: 'Bird love – Prestige',
       category: 'Bird',
       countInStock: 10,
@@ -249,6 +261,7 @@ const data = {
     },
     {
       _id: '13',
+      code: 'LL',
       name: 'Bird love – Exotic food',
       category: 'Bird',
       countInStock: 10,
@@ -267,6 +280,7 @@ const data = {
     },
     {
       _id: '14',
+      code: 'MM',
       name: 'RD Farm – Vegetable dream',
       category: 'Small pet',
       countInStock: 10,
@@ -287,6 +301,7 @@ const data = {
     },
     {
       _id: '15',
+      code: 'NN',
       name: ' Green taste Excel Feeding Hay with Hedgerow Herbs ',
       category: 'Small pet',
       countInStock: 10,
@@ -307,6 +322,7 @@ const data = {
     },
     {
       _id: '16',
+      code: 'OO',
       name: 'Green taste Excel Indoor Rabbit Nuggets',
       category: 'Small pet',
       countInStock: 0,

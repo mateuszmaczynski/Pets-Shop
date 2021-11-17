@@ -11,6 +11,7 @@ import user from '../assets/icons/user.svg';
 const Header = () => {
   const cartData = useSelector((state) => state.cart);
   const {cartItems} = cartData;
+
   return (
     <header className='header-container'>
       <img src={logo} className="logo" alt="Pets online store logo"/>
