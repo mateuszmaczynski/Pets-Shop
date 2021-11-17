@@ -1,6 +1,5 @@
 import {CART_ADD_ITEM, CART_REMOVE_ITEM, PRODUCT_DETAILS_SUCCESS} from '../constants';
 
-debugger;
 export const addToCart = (productData, productId, quantity) => async (dispatch, getState) => {
   if(productId){
     dispatch({
