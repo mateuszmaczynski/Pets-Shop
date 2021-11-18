@@ -11,6 +11,7 @@ import {SearchBox} from "./index";
 const Header = () => {
   const cartData = useSelector((state) => state.cart);
   const {cartItems} = cartData;
+
   return (
     <header className='header-container'>
       <Link to='/'>
