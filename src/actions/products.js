@@ -9,7 +9,7 @@ import {
 } from "../constants";
 
 export const getProductList = () => async (dispatch) => {
-  let getProductsUrl = 'https://run.mocky.io/v3/9eed3593-c5e1-4a12-a45f-106ea86e0822';
+  let getProductsUrl = 'https://run.mocky.io/v3/a1925849-2f6f-4fde-af9e-2ed813520673';
   dispatch({
     type: PRODUCT_LIST_REQUEST,
   })
@@ -24,7 +24,7 @@ export const getProductList = () => async (dispatch) => {
 export const getProductDetails = (productId) => async (dispatch) => {
   dispatch({ type: PRODUCT_DETAILS_REQUEST, payload: productId });
   try {
-    let getProductUrl = 'https://run.mocky.io/v3/9eed3593-c5e1-4a12-a45f-106ea86e0822';
+    let getProductUrl = 'https://run.mocky.io/v3/a1925849-2f6f-4fde-af9e-2ed813520673';
     const { data } = await axios.get(getProductUrl);
     const product = data.products.find(({_id}) => _id == productId);
     dispatch({ type: PRODUCT_DETAILS_SUCCESS, payload: product });

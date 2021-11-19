@@ -1,10 +1,14 @@
-import {CART_ADD_ITEM, CART_REMOVE_ITEM, PRODUCT_DETAILS_SUCCESS} from '../constants';
+import {
+  CART_ADD_ITEM,
+  CART_REMOVE_ITEM
+} from '../constants';
 
 export const addToCart = (productData, productId, quantity) => async (dispatch, getState) => {
   if(productId){
     dispatch({
       type: CART_ADD_ITEM,
       payload: {
+        code: productData?.code,
         name: productData?.name,
         image: productData?.image,
         price: productData?.price,

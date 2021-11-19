@@ -8,7 +8,7 @@ import {
 } from '../components';
 import {Link, useNavigate, useParams} from 'react-router-dom';
 
-const ProductPage = (props) => {
+const ProductPage = () => {
   const [quantity, setQuantity] = useState(1);
   const navigate = useNavigate();
   const {id: productId} = useParams();
@@ -22,6 +22,7 @@ const ProductPage = (props) => {
 
   const addToCart = () => {
     const productData = {
+      code: productDetails?.product?.code,
       name: productDetails?.product?.name,
       image: productDetails?.product?.image,
       price: productDetails?.product?.price,
