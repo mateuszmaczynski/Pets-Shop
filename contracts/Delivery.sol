@@ -23,9 +23,6 @@ contract Delivery is ChainlinkClient, Ownable {
 
    constructor() {
         setPublicChainlinkToken();
-      //  oracle = 0xf4316Eb1584B3CF547E091Acd7003c116E07577b;
-       // jobId = "2e37b8362f474fce9dd019fa195a8627";
-       // fee = 0.1 * 10 ** 18; // (Varies by network and job)
   }
 
   /**
@@ -37,6 +34,13 @@ contract Delivery is ChainlinkClient, Ownable {
     return chainlinkTokenAddress();
   }
 
+  /**
+   * @notice Creates a request to the stored Oracle contract address
+   * @dev Calls createRequestTo using the stored Oracle contract address
+   * for the first parameter
+   * @param _url The URL to fetch data from
+   * @param _code The item code to be executed
+   */
   function createRequestTo(
     string memory _url,
     string memory _code
