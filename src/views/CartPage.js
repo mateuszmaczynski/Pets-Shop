@@ -1,12 +1,14 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {Link, useLocation, useNavigate, useParams} from 'react-router-dom';
+import {Link, useLocation, useNavigate} from 'react-router-dom';
 import {addToCart, removeFromCart} from '../actions/cart';
 import {Message} from '../components';
-import { ethers } from "ethers";
+import {ethers} from "ethers";
 import Shop from '../artifacts/contracts/Shop.sol/Shop.json'
+import axios from 'axios';
 
-const CartPage = (props) => {
+const CartPage = () => {
+  const [ethValue, setEthValue] = useState(0);
   const dispatch = useDispatch();
   const {state} = useLocation();
   const navigate = useNavigate();
@@ -22,43 +24,64 @@ const CartPage = (props) => {
     }
   }, [dispatch, productId, quantity]);
 
+  useEffect(() => {
+    getEthValue();
+  }, []);
+
+  const getEthValue = () => {
+    axios.get('https://api.coinbase.com/v2/prices/ETH-USD/spot')
+      .then(({data}) => {
+        setEthValue(data.data.amount)
+      })
+      .catch((err) => console.error('error =', err))
+  };
+
+  const countItems = () => {
+    let number = cartItems.reduce((acc, currentValue) => acc + currentValue.quantity, 0)
+    return number > 1 ? number + ' items' : number ? number + ' items' : null;
+  }
+
+  const countValue = () => {
+    const valueUSD = cartItems.reduce((acc, currentValue) => acc + currentValue.price * currentValue.quantity, 0)
+    const value = valueUSD / Number(ethValue);
+    return value.toFixed(10);
+  }
+
   const removeFromCartHandler = (id) => {
     dispatch(removeFromCart(id));
   }
 
-  async function connect () {
+  const buildOrderObject = () => {
+    let items = [];
 
-    await window.ethereum.request({ method: 'eth_requestAccounts' });
+    //Build tuple "AA" - product's code, 1 - count of current product
+    cartItems.map(({code, quantity}) => items.push([code, quantity]));
+    return items;
+  };
+
+  async function connect() {
+    await window.ethereum.request({method: 'eth_requestAccounts'});
     const provider = new ethers.providers.Web3Provider(window.ethereum);
-
     const signer = provider.getSigner(0)
     const contract = new ethers.Contract("0x7628f5daBB0234e8e6a9ebC0968e4715F3b9b501", Shop.abi, signer);
-
-    //Tuple "AA" - product's code, 1 - count of current product
-    const tup = [["AA", 1], ["GG", 1]]; // <- TODO Connect with the cart
-
+    const listItems = buildOrderObject();
+    const totalValue = countValue();
     const address = await signer.getAddress();
-    contract.buy(tup, {from: address.toString(), value: ethers.utils.parseEther("0.00001")}).then(function(result){
-      alert('transaction success')})
-	.catch(function(e){
-   //Error handling
-      console.log('error')
-   });
-  };
+    contract.buy(listItems, {
+      from: address.toString(),
+      value: ethers.utils.parseEther(totalValue)
+    }).then(function (result) {
+      alert('transaction success')
+    })
+      .catch(function (err) {
+        console.log('error', err.message)
+      });
+  }
 
   const checkoutHandler = () => {
     navigate(`/shipping`);
   };
 
-  const countItems = () => {
-    const number = cartItems.reduce((acc, currentValue) => acc + currentValue.quantity, 0)
-    return number > 1 ? number + ' items' : number + ' item'
-  }
-
-  const countValue = () => {
-    const value = cartItems.reduce((acc, currentValue) => acc + currentValue.price*currentValue.quantity, 0)
-    return value.toFixed(2) + '$'
-  }
   return (
     <>
       <div className='flex-row-top'>
@@ -88,18 +111,17 @@ const CartPage = (props) => {
                         <div className='flex-item-center col-very-narrow'>
                           <select
                             value={item.quantity}
-                            onChange={(e) =>
+                            onChange={(e) => (
                               dispatch(
                                 addToCart({
+                                  code: item?.code,
                                   name: item?.name,
                                   image: item?.image,
                                   price: item?.price,
                                   countInStock: item?.countInStock,
                                   id: item?.id
                                 }, item.id, Number(e.target.value))
-                              )
-                            }
-                          >
+                              ))}>
                             {[...Array(item.countInStock).keys()].map((x) => (
                               <option key={x + 1} value={x + 1}>
                                 {x + 1}
@@ -114,8 +136,7 @@ const CartPage = (props) => {
                           <button
                             className='button__default'
                             type='button'
-                            onClick={() => removeFromCartHandler(item.id)}
-                          >
+                            onClick={() => removeFromCartHandler(item.id)}>
                             Delete
                           </button>
                         </div>
@@ -132,10 +153,8 @@ const CartPage = (props) => {
         <div className='flex-col-2-no-grow'>
           <div className='card-box'>
             <div className='flex-row-between'>
-              <div className='text-medium'>Subtotal {countItems()}: {countValue()}</div>
-              <button className='button button__wide margin-top-medium'
-onClick={() => connect()}
->
+              <div className='text-medium'>Subtotal {countItems()} {ethValue && ` : ${countValue()} ETH`}</div>
+              <button className='button button__wide margin-top-medium' onClick={() => connect()}>
                 Proceed to Checkout
               </button>
             </div>
