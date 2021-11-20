@@ -2,6 +2,7 @@ import React from 'react';
 import './ProductTile.scss';
 import {Link} from 'react-router-dom';
 import {Rating} from './index';
+import PropTypes from 'prop-types';
 
 const ProductTile = ({product}) => {
   return (
@@ -12,7 +13,7 @@ const ProductTile = ({product}) => {
         </Link>
       </div>
       <div className='product-description'>
-        <div className="product-description__name">
+        <div className='product-description__name'>
           <Link to={`/product/${product._id}`}>
             <h2>{product.name}</h2>
           </Link>
@@ -26,6 +27,10 @@ const ProductTile = ({product}) => {
       </div>
     </div>
   )
+};
+
+ProductTile.propTypes = {
+  product: PropTypes.object,
 };
 
 export default ProductTile;

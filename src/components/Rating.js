@@ -1,7 +1,8 @@
 import React from 'react';
 import './Rating.scss';
+import PropTypes from 'prop-types';
 
-const Rating = ({rating = 0, numReviews = '' }) => {
+const Rating = ({rating = 0, numReviews = 0 }) => {
   let stars = [];
   for(let i = 1; i < 6; i ++ ){
     stars.push(
@@ -19,11 +20,19 @@ const Rating = ({rating = 0, numReviews = '' }) => {
     )
   }
   return (
-    <div className="rating">
+    <div className='rating'>
       {stars}
       <span>{numReviews + ' reviews'}</span>
     </div>
   );
+}
+
+Rating.propTypes = {
+  rating: PropTypes.number,
+  numReviews: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ])
 }
 
 export default Rating;
