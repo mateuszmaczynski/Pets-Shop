@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {Link, useLocation, useNavigate} from 'react-router-dom';
+import {Link, useLocation} from 'react-router-dom';
 import {addToCart, removeFromCart} from '../actions/cart';
 import {Message} from '../components';
 import {ethers} from "ethers";
@@ -11,7 +11,6 @@ const CartPage = () => {
   const [ethValue, setEthValue] = useState(0);
   const dispatch = useDispatch();
   const {state} = useLocation();
-  const navigate = useNavigate();
   const cart = useSelector((state) => state.cart)
   const {cartItems} = cart;
   const productId = state?.productData?.id;
@@ -53,7 +52,6 @@ const CartPage = () => {
 
   const buildOrderObject = () => {
     let items = [];
-
     //Build tuple "AA" - product's code, 1 - count of current product
     cartItems.map(({code, quantity}) => items.push([code, quantity]));
     return items;
@@ -70,24 +68,22 @@ const CartPage = () => {
     contract.buy(listItems, {
       from: address.toString(),
       value: ethers.utils.parseEther(totalValue)
-    }).then(function (result) {
-      alert('transaction success')
     })
-      .catch(function (err) {
+      .then((res) => {
+        alert('transaction success' + res)
+      })
+      .catch((err) => {
         console.log('error', err.message)
-      });
+      })
   }
-
-  const checkoutHandler = () => {
-    navigate(`/shipping`);
-  };
-
   return (
     <>
       <div className='flex-row-top'>
         <div className='flex-col'>
           <div className='text-large'>
-            Shopping Cart
+            <div className='medium-right-low'>
+              Shopping Cart
+            </div>
             {cartItems.length == 0 ? (
               <Message>
                 Cart is empty. <Link to='/'>Go Shopping</Link>

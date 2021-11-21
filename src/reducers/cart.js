@@ -1,4 +1,5 @@
 import {CART_ADD_ITEM, CART_REMOVE_ITEM} from '../constants';
+let item, existItem;
 
 export const cartReducer = (
   state = {cartItems: []},
@@ -6,8 +7,8 @@ export const cartReducer = (
 ) => {
   switch (action.type) {
     case CART_ADD_ITEM:
-      const item = action.payload;
-      const existItem = state.cartItems.find((el) => el.id === item.id);
+      item = action.payload;
+      existItem = state.cartItems.find((el) => el.id === item.id);
       if (existItem) {
         return {
           ...state,
@@ -16,7 +17,7 @@ export const cartReducer = (
           ),
         };
       } else {
-        return { ...state, cartItems: [...state.cartItems, item] };
+        return {...state, cartItems: [...state.cartItems, item]};
       }
     case CART_REMOVE_ITEM:
       return {

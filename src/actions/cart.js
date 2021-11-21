@@ -4,10 +4,9 @@ import {
 } from '../constants';
 
 export const addToCart = (productData, productId, quantity) => async (dispatch, getState) => {
-  if(productId){
+  if (productId) {
     dispatch({
-      type: CART_ADD_ITEM,
-      payload: {
+      type: CART_ADD_ITEM, payload: {
         code: productData?.code,
         name: productData?.name,
         image: productData?.image,
@@ -22,6 +21,6 @@ export const addToCart = (productData, productId, quantity) => async (dispatch, 
 }
 
 export const removeFromCart = (productId) => (dispatch, getState) => {
-  dispatch({ type: CART_REMOVE_ITEM, payload: productId });
+  dispatch({type: CART_REMOVE_ITEM, payload: productId});
   localStorage.setItem('cartItems', JSON.stringify(getState().cart.cartItems));
 };

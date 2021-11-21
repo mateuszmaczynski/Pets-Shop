@@ -6,3 +6,9 @@
   border-bottom: var(--line-blue-dark);
   border-top: var(--line-blue-dark);
 }
+
+.wallet-box {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 2rem;
+}

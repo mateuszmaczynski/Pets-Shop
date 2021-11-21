@@ -3,7 +3,7 @@ import './SearchBox.scss';
 import searchIcon from '../assets/icons/search.svg';
 import {useNavigate} from 'react-router-dom';
 
-const SearchBox = (props) => {
+const SearchBox = () => {
   const [name, setName] = useState('');
   const navigate = useNavigate();
 
@@ -18,8 +18,8 @@ const SearchBox = (props) => {
         type='text'
         name='q'
         id='site-search'
-        minLength="3"
-        maxLength="30"
+        minLength='3'
+        maxLength='30'
         className='search__input'
         placeholder='Search product'
         onChange={(e) => setName(e.target.value)}/>
