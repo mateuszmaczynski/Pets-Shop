@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {
   BrowserRouter as Router,
   Route,
@@ -26,6 +26,20 @@ import dog from './assets/icons/dog.ico';
 import rabbit from './assets/icons/rabbit.ico';
 
 function App() {
+  useEffect(() => {
+    isHasAccount();
+  }, [])
+
+  const isHasAccount = async () => {
+    try {
+      const walletId = await window.ethereum.request({method: 'eth_requestAccounts'});
+      localStorage.setItem('walletId', walletId);
+      window.alert('walletId', walletId);
+    } catch {
+      localStorage.removeItem('walletId');
+      window.alert('To make a purchase, you need to log in with a crypto wallet');
+    }
+  };
 
   return (
     <Router>
@@ -44,9 +58,9 @@ function App() {
             <Route path='/cats' element={<CatProducts/>}/>
             <Route path='/dogs' element={<DogProducts/>}/>
             <Route path='/product/:id' element={<ProductPage/>}/>
-            <Route path="/search/name/:name" element={<SearchPage />} exact/>
+            <Route path="/search/name/:name" element={<SearchPage/>} exact/>
             <Route path='/small-pets' element={<SmallPetsProducts/>}/>
-            <Route exact path='/' element={<AllProducts />}/>
+            <Route exact path='/' element={<AllProducts/>}/>
           </Routes>
         </Main>
         <Footer/>
