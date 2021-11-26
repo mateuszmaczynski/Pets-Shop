@@ -34,7 +34,7 @@ function App() {
     try {
       const walletId = await window.ethereum.request({method: 'eth_requestAccounts'});
       localStorage.setItem('walletId', walletId);
-      window.alert('walletId', walletId);
+      //window.alert('walletId', walletId);
     } catch {
       localStorage.removeItem('walletId');
       window.alert('To make a purchase, you need to log in with a crypto wallet');

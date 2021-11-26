@@ -69,8 +69,8 @@ const CartPage = () => {
       from: address.toString(),
       value: ethers.utils.parseEther(totalValue)
     })
-      .then((res) => {
-        alert('transaction success' + res)
+      .then(() => {
+        alert('transaction success')
       })
       .catch((err) => {
         console.log('error', err.message)
