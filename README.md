@@ -8,6 +8,9 @@ The pet shop is an example of a decentralized e-commerce platform. It is the onl
 It is a decentralized e-commerce platform dedicated for private and public blockchain networks. It is a shop where potential customers can buy something interesting for pets.
 
 ## How we built it
+
+![obraz](https://user-images.githubusercontent.com/94545583/143566656-33c093c7-89b9-4d96-99fc-b4cc64f7aa8f.png)
+
 We can partition our solution into three layers. First is the web part. It is written in React.
 A second layer is blockchain. It is based on solidity smart contracts. 
 The shop contract is the main component. It has a buy and createNewItem function. The buy function is responsible for the buying process. It takes a tuple with a product’s code and an amount of specific product. Second function is responsible for creation of new items and only contarct’s owner can manage this method. 
