@@ -4,6 +4,7 @@ import {Link, useLocation} from 'react-router-dom';
 import {addToCart, removeFromCart} from '../actions/cart';
 import {Message} from '../components';
 import {ethers} from "ethers";
+import { Wallet } from "zksync";
 import Shop from '../artifacts/contracts/Shop.sol/Shop.json'
 import axios from 'axios';
 
@@ -58,10 +59,35 @@ const CartPage = () => {
   };
 
   async function connect() {
+
     await window.ethereum.request({method: 'eth_requestAccounts'});
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const signer = provider.getSigner(0)
     const contract = new ethers.Contract("0x7628f5daBB0234e8e6a9ebC0968e4715F3b9b501", Shop.abi, signer);
+
+
+if(payByzkSync) {
+
+const syncProvider = await zksync.getDefaultProvider("rinkeby");
+const ethersProvider = ethers.getDefaultProvider("rinkeby");
+const ethWallet = ethers.Wallet.fromMnemonic(MNEMONIC).connect(ethersProvider);
+const syncWallet = await zksync.Wallet.fromEthSigner(ethWallet, syncProvider);
+
+const amount = zksync.utils.closestPackableTransactionAmount(ethers.utils.parseEther(countValue));
+const fee = zksync.utils.closestPackableTransactionFee(ethers.utils.parseEther("0.001"));
+
+await syncWallet.syncTransfer({
+  to: contract.address(),
+  token: "ETH",
+  amount,
+  fee,
+},function (out) {
+console.log(out)});
+
+
+return;}
+
+
     const listItems = buildOrderObject();
     const totalValue = countValue();
     const address = await signer.getAddress();
